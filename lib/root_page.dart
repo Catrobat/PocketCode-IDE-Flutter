@@ -56,7 +56,33 @@ class _RootPageState extends State<RootPage> {
             if (value == 0) {
               debugPrint("Bewerte und pressed!");
             } else if (value == 1) {
+             showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => Dialog(
+                backgroundColor: const Color.fromARGB(255, 87, 87, 87),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Nutzungsbedingungen und Leistungen\n\n Um die App und andere Projekte welche von Catrobat zur Verfügung gestellt werden benutzen zu dürfen, muss den Nutzungsbedingungen zugestimmt  werden. Diese müssen auch während der Benutzung der App eingehaltan werden.  Für weitere Informationen zu den Nutzungsbedingungen klicken Sie auf den untenstehenden Link.',
+                        ), //TODO add link
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('OK'),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+             );
             } else if (value == 2) {
+            } else if (value == 3) {
+            } else if (value == 4) {
+
             } else if (value == 5) {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (BuildContext context) {
