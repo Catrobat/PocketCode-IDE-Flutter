@@ -1,5 +1,7 @@
 import 'package:catrobat_flutter/ui/shared/buttons/Fab.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'home_page.dart';
 import 'settings.dart';
@@ -54,30 +56,45 @@ class _RootPageState extends State<RootPage> {
             ];
           }, onSelected: (value) {
             if (value == 0) {
-              debugPrint("Bewerte und pressed!");
+              debugPrint("Bewerte uns pressed!");
             } else if (value == 1) {
               showDialog<String>(
                 context: context,
-                builder: (BuildContext context) => Dialog(
-                  backgroundColor: const Color.fromARGB(255, 87, 87, 87),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Nutzungsbedingungen und Leistungen', style: TextStyle(fontSize: 16),),
+                  content: RichText(
+                    text: TextSpan(
+                      text: "Um die App und andere Projekte welche von Catrobat zur Verfügung gestellt werden benutzen zu dürfen, muss den Nutzungsbedingungen zugestimmt  werden. Diese müssen auch während der Benutzung der App eingehaltan werden. Für weitere Informationen zu den Nutzungsbedingungen klicken Sie auf den untenstehenden Link.\n",
+                      // TODO: style:
                       children: [
-                        const Text(
-                          'Nutzungsbedingungen und Leistungen\n\n Um die App und andere Projekte welche von Catrobat zur Verfügung gestellt werden benutzen zu dürfen, muss den Nutzungsbedingungen zugestimmt  werden. Diese müssen auch während der Benutzung der App eingehaltan werden.  Für weitere Informationen zu den Nutzungsbedingungen klicken Sie auf den untenstehenden Link.',
-                        ), //TODO add link
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
+                        const WidgetSpan(child: SizedBox(width: 10, height: 50)),
+                        TextSpan(
+                          text: 'Nutzungsbedingungen und Leistungen',
+                         //TODO: style
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 205, 116, 0),
+                           ),
+                          recognizer: TapGestureRecognizer()..onTap =  () async {
+                            var url = Uri.parse("https://www.google.at");
+                            if (await launchUrl(url)) {
+                                await launchUrl(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
                           },
-                          child: const Text('OK'),
-                        )
-                      ],
+                        ),
+                      ]
                     ),
                   ),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('OK'),
+                    ),
+                  ],
+                  backgroundColor: Colors.black54,
                 ),
               );
             } else if (value == 2) {
