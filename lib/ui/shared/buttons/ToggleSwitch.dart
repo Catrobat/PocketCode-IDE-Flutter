@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ToggleSwitch extends StatefulWidget {
-  const ToggleSwitch({super.key});
+  final String title;
+  const ToggleSwitch({super.key, required this.title});
 
   @override
   State<ToggleSwitch> createState() => _ToggleSwitchState();
@@ -43,18 +44,24 @@ class _ToggleSwitchState extends State<ToggleSwitch> {
       },
     );
 
-    return Switch(
-      // This bool value toggles the switch.
-      value: light,
-      overlayColor: overlayColor,
-      trackColor: trackColor,
-      thumbColor: const MaterialStatePropertyAll<Color>(Colors.black),
-      onChanged: (bool value) {
-        // This is called when the user toggles the switch.
-        setState(() {
-          light = value;
-        });
-      },
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(widget.title),
+        Switch(
+          // This bool value toggles the switch.
+          value: light,
+          overlayColor: overlayColor,
+          trackColor: trackColor,
+          thumbColor: const MaterialStatePropertyAll<Color>(Colors.black),
+          onChanged: (bool value) {
+            // This is called when the user toggles the switch.
+            setState(() {
+              light = value;
+            });
+          },
+        ),
+      ],
     );
   }
 }

@@ -14,14 +14,10 @@ class _LandscapePortraitRadioState extends State<LandscapePortraitRadio> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
-          title: const Icon(
-            Icons.stay_current_portrait,
-            color: Colors.white70,
-          ),
-          leading: Radio(
+    return Flexible(
+      child: Row(
+        children: [
+          Radio(
               value: ScreenMode.portrait,
               activeColor: Colors.cyan,
               groupValue: _character,
@@ -30,11 +26,12 @@ class _LandscapePortraitRadioState extends State<LandscapePortraitRadio> {
                   _character = value;
                 });
               }),
-        ),
-        ListTile(
-          title:
-              const Icon(Icons.stay_current_landscape, color: Colors.white70),
-          leading: Radio(
+          const Icon(
+            Icons.stay_current_portrait,
+            color: Colors.white70,
+          ),
+          const SizedBox(width: 20),
+          Radio(
               value: ScreenMode.landscape,
               activeColor: Colors.cyan,
               groupValue: _character,
@@ -43,8 +40,12 @@ class _LandscapePortraitRadioState extends State<LandscapePortraitRadio> {
                   _character = value;
                 });
               }),
-        ),
-      ],
+          const Icon(
+            Icons.stay_current_portrait,
+            color: Colors.white70,
+          ),
+        ],
+      ),
     );
   }
 }
