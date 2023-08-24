@@ -110,6 +110,12 @@ class _RootPageState extends State<RootPage> {
         ),
         title: const Text('Pocket Code'),
         actions: [
+          IconButton(
+          onPressed: () async {
+            var url = Uri.parse("https://wiki.catrobat.org/bin/view/Documentation/");
+            launchUrl(url);
+        }, 
+          icon:const Icon(Icons.help_outline)),
           PopupMenuButton(itemBuilder: (context) {
             return [
               const PopupMenuItem<int>(
@@ -161,7 +167,7 @@ class _RootPageState extends State<RootPage> {
         ],
       ),
       body: const HomePage(),
-      floatingActionButton: Fab(),
+      floatingActionButton: const Fab(),
     );
   }
 }
