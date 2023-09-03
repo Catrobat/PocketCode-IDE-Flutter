@@ -166,7 +166,7 @@ class _RootPageState extends State<RootPage> {
           }),
         ],
       ),
-      body: const HomePage(),
+      body: HomePage(),
       floatingActionButton: const Fab(),
     );
   }
