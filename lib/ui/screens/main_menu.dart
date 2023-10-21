@@ -43,7 +43,7 @@ class MainMenu extends StatelessWidget {
                     padding: EdgeInsets.only(left: 10.0, top: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         Text(
                           'Projekte am Gerät',
                           style: TextStyle(fontSize: 22, color: Colors.black),

@@ -1,3 +1,4 @@
+import 'package:catrobat_flutter/sign-in-page.dart';
 import 'package:catrobat_flutter/ui/shared/buttons/Fab.dart';
 import 'package:catrobat_flutter/ui/shared/dialogs/TextDialog.dart';
 import 'package:flutter/gestures.dart';
@@ -112,7 +113,7 @@ class _RootPageState extends State<RootPage> {
         actions: [
           IconButton(
           onPressed: () async {
-            var url = Uri.parse("https://wiki.catrobat.org/bin/view/Documentation/");
+            var url = Uri.parse("https://catrob.at/help");
             launchUrl(url);
         }, 
           icon:const Icon(Icons.help_outline)),
@@ -149,17 +150,26 @@ class _RootPageState extends State<RootPage> {
             ];
           }, onSelected: (value) {
             if (value == 0) {
-              debugPrint("Bewerte uns pressed!");
+              //TODO
             } else if (value == 1) {  
               TextDialog.showAlertDialog(context, titleTermsOfUse, contentTermsOfUse, actionsTermsOfUse);
             } else if (value == 2) {
+              var url = Uri.parse("https://catrob.at/privacypolicy");
+              launchUrl(url);
             } else if (value == 3) {
               TextDialog.showAlertDialog(context, titleAboutApp, contentAboutApp, actionsTermsOfUse);
             } else if (value == 4) {
+              //TODO
             } else if (value == 5) {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (BuildContext context) {
                   return const SettingsPage();
+                }),
+              );
+            } else if (value == 6) {
+                Navigator.of(context).push(
+                MaterialPageRoute(builder: (BuildContext context) {
+                  return const SignInPage();
                 }),
               );
             }
