@@ -23,12 +23,23 @@ class CreateProjectDialog {
               ),
               const LandscapePortraitRadio(),
               const ToggleSwitch(title: "Beispielprojekt"),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Close'),
-              )
+              Row (
+                mainAxisAlignment: MainAxisAlignment.end, 
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Abbrechen'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('OK'),
+                  )
+                ],
+              ),
             ],
           ),
         ),

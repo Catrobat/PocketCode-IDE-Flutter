@@ -35,6 +35,6 @@ class SettingsTable extends StatelessWidget {
   TableRow buildRow(String cell, bool checkbox) => TableRow(
     children: <Widget>[
       Text(cell), 
-      checkbox ? Checkbox(checkColor: Colors.black, focusColor: Colors.black ,value: true, onChanged: null) : Text(""),] 
+      checkbox ? const Checkbox(checkColor: Colors.black, focusColor: Colors.black ,value: true, onChanged: null) : Text(""),] 
   );
 }

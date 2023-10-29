@@ -1,4 +1,4 @@
-import 'package:catrobat_flutter/sign-in-page.dart';
+import 'package:catrobat_flutter/SignInPage.dart';
 import 'package:catrobat_flutter/ui/shared/buttons/Fab.dart';
 import 'package:catrobat_flutter/ui/shared/dialogs/TextDialog.dart';
 import 'package:flutter/gestures.dart';
