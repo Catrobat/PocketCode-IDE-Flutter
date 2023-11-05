@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignInRegisterDialog {
-  static Future<void> signInRegisterDialog(BuildContext context, Text title, List<Widget> content, List<Widget> actions) {
+  static Future<void> signInRegisterDialog(BuildContext context, Text title, Column content, Column actions) {
     return showDialog<String>(
       context: context,
       builder: (BuildContext context) => Dialog(
@@ -13,8 +13,8 @@ class SignInRegisterDialog {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               title,
-              Text("Custom form"), //TODO
-              Text("buttons in one widget") //TODO
+              content,
+              actions
             ],
           ),
   
