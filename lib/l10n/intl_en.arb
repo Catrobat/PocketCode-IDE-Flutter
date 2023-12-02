@@ -5,34 +5,34 @@
   },
   "projectsonthedevice": "Projects on the device",
   "@projectsonthedevice": {
-    "description": " "
+    "description": "Projekte am Gerät"
   },
   "mostdownloaded": "Most downloaded",
   "@mostdownloaded": {
-    "description": " "
+    "description": "Meist heruntergeladen"
   },
   "randomprojects": "Random projects",
   "@randomprojects": {
-    "description": " "
+    "description": "Zufällige Projekte"
   },
   "projectname": "Project name",
   "@projectname": {
-    "description": " "
+    "description": "Projektname"
   },
   "mainproject": "Main Project",
   "@mainproject": {
-    "description": " "
+    "description": "Mein Projekt"
   },
   "exampleproject": "Example project",
   "@exampleproject": {
-    "description": " "
+    "description": "Beispielprojekt"
   },
   "cancel": "Cancel",
   "@cancel": {
-    "description": " "
+    "description": "Abbrechen"
   },
   "ok": "OK",
   "@ok": {
-    "description": " "
+    "description": "OK"
   }
 }
