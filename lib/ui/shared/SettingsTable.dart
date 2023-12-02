@@ -6,47 +6,35 @@ class SettingsTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Table( //TODO
-      border: TableBorder(bottom: BorderSide(), horizontalInside: BorderSide()),
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      children: <TableRow>[
-        const TableRow(
-          children: <Widget>[
-          Text("Sprache \nApp-Sprache auswählen", style: TextStyle(color: Colors.black),),
-          Text("")
-          ],
-        ),
-        const TableRow(
-          children: <Widget>[
-          Text("Webzugriff \nBearbeiten, um vertrauenswürdeige Domänen hinzuzufügen oder zu entfernen", style: TextStyle(color: Colors.black)),
-          Text("")
-          ],
-        ),
-        const TableRow(
-          children: <Widget>[
-          Text("Mehrspieler-Erweiterung \nErmögliche der App, über Bluetooth freigegebene Multiplayer-Variablen zu verwenden", style: TextStyle(color: Colors.black)),
-          const Checkbox(checkColor: Colors.black, value: true, onChanged: null), //TODO
-          ],
-        ),
-        const TableRow(
-          children: <Widget>[
-            TableCell(child: Text("Sticken \nErstelle Muster für Stickmaschinen", style: TextStyle(color: Colors.black))),
-            TableCell(child: Checkbox(checkColor: Colors.black, focusColor: Colors.black ,value: true, onChanged: null),), //TODO),
-          ],
-        ),
-        const TableRow(
-          children: <Widget>[
-          TableCell(child: Text("Lego Mindstorms NXT Bausteine \nErlaube die Steuerung von Lego Mindstorm NXT Robotern", style: TextStyle(color: Colors.black))),
-          TableCell(child: Text("")),
-          ],
-        ),
-        const TableRow(
-          children: <Widget>[
-            TableCell(child: Text("Lego Mindstorms EV3 Bausteine \nErlaube die Steuerung von Lego Mindstorm EV3 Robotern", style: TextStyle(color: Colors.black)) ),
-            TableCell(child: Text("")),
-          ],
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Table(
+        border: const TableBorder(bottom: BorderSide(), horizontalInside: BorderSide()),
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: <TableRow>[
+          buildRow("Sprache \nApp-Sprache auswählen", false),
+          buildRow("Webzugriff \nBearbeiten, um vertrauenswürdeige Domänen hinzuzufügen oder zu entfernen", false),
+          buildRow("Mehrspieler-Erweiterung \nErmögliche der App, über Bluetooth freigegebene Multiplayer-Variablen zu verwenden", true),
+          buildRow("Sticken \nErstelle Muster für Stickmaschinen", true),
+          buildRow("Lego Mindstorms NXT Bausteine \nErlaube die Steuerung von Lego Mindstorm NXT Robotern", false),
+          buildRow("Lego Mindstorms EV3 Bausteine \nErlaube die Steuerung von Lego Mindstorm EV3 Robotern", false),
+          buildRow("Parrot AR.Drone 2.0 Bausteine \nErlaubt die Steuerung von ARDrone 2.0 Quadcoptern", false),
+          buildRow("Parrot Jumping Sumo Bausteine \nErlaubt die Steuerung von Parrots Jumping Sumo", true),
+          buildRow("Arduino Bausteine \nErlaubt die Steuerung mit Arduino Boards", true),
+          buildRow("Nahfeldkommunikation \nErlaube die Nutzung von NFC-Tags in Projekten", true),
+          buildRow("Raspberry Pi Bausteine \nErlaubt die Steuerung von Raspberry Pi Computern", true),
+          buildRow("Phiro Bausteine \nErlaubt die Steuerung eines Phiro Roboters", true),
+          buildRow("Erlaubt Cast-Funktionen \nZeigt den Cast-Button und erlaubt die Einstellung eines Cast-Projektes", true),
+          buildRow("Bedienungshilfe \nAussehen der App ändern", false),
+          buildRow("Hinweise anzeigen \nAktivieren um Hinweise anzuzeigen", true),
+          buildRow("Erweiterung testen \nErmöglicht das Erstellen von Tests", true),
+          buildRow("Sende anonyme Absturzberichte \nAbsturzberichte automatisch senden", true),
+        ],
+      ),
     );
   }
+  TableRow buildRow(String cell, bool checkbox) => TableRow(
+    children: <Widget>[
+      Text(cell), 
+      checkbox ? const Checkbox(checkColor: Colors.black, focusColor: Colors.black ,value: true, onChanged: null) : Text(""),] 
+  );
 }

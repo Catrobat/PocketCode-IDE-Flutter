@@ -1,0 +1,38 @@
+{
+  "language": "English",
+  "@language": {
+    "description": "The current Language"
+  },
+  "projectsonthedevice": "Projects on the device",
+  "@projectsonthedevice": {
+    "description": " "
+  },
+  "mostdownloaded": "Most downloaded",
+  "@mostdownloaded": {
+    "description": " "
+  },
+  "randomprojects": "Random projects",
+  "@randomprojects": {
+    "description": " "
+  },
+  "projectname": "Project name",
+  "@projectname": {
+    "description": " "
+  },
+  "mainproject": "Main Project",
+  "@mainproject": {
+    "description": " "
+  },
+  "exampleproject": "Example project",
+  "@exampleproject": {
+    "description": " "
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": " "
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": " "
+  }
+}

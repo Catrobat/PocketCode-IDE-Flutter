@@ -1,11 +1,12 @@
 import 'package:catrobat_flutter/ui/screens/my_project.dart';
 import 'package:catrobat_flutter/ui/shared/lists/horizontal_list.dart';
 import 'package:flutter/material.dart';
+import 'package:catrobat_flutter/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../service/Project.dart';
 
 class MainMenu extends StatelessWidget {
-  const MainMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class MainMenu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Projekte am Gerät',
+                          S.of(context).projectsonthedevice,
                           style: TextStyle(fontSize: 22, color: Colors.black),
                         ),
                         Padding(
@@ -65,7 +66,7 @@ class MainMenu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Meist heruntergeladen',
+                          S.of(context).mostdownloaded,
                           style: TextStyle(fontSize: 22, color: Colors.black),
                         ),
                         Padding(
@@ -85,7 +86,7 @@ class MainMenu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Zufällige Projekte',
+                          S.of(context).randomprojects,
                           style: TextStyle(fontSize: 22, color: Colors.black),
                         ),
                         Padding(

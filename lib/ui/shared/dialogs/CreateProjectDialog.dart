@@ -1,3 +1,4 @@
+import 'package:catrobat_flutter/generated/l10n.dart';
 import 'package:catrobat_flutter/ui/shared/buttons/LandscapePortraitRadio.dart';
 import 'package:catrobat_flutter/ui/shared/buttons/ToggleSwitch.dart';
 import 'package:flutter/material.dart';
@@ -14,21 +15,32 @@ class CreateProjectDialog {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Projektname'),
-              const TextField(
+              Text(S.of(context).projectname),
+              TextField(
                 autofocus: true,
                 decoration: InputDecoration(
                     border: UnderlineInputBorder(),
-                    hintText: 'Mein Projekt ()'),
+                    hintText: S.of(context).mainproject+" ()"),
               ),
               const LandscapePortraitRadio(),
-              const ToggleSwitch(title: "Beispielprojekt"),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text('Close'),
-              )
+              ToggleSwitch(title: S.of(context).exampleproject),
+              Row (
+                mainAxisAlignment: MainAxisAlignment.end, 
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(S.of(context).cancel),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(S.of(context).ok),
+                  )
+                ],
+              ),
             ],
           ),
         ),
