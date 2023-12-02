@@ -23,7 +23,11 @@ class CreateProjectDialog {
                     hintText: S.of(context).mainproject+" ()"),
               ),
               const LandscapePortraitRadio(),
+
               ToggleSwitch(title: S.of(context).exampleproject),
+
+              const ToggleSwitch(title: "Beispielprojekt"),
+
               Row (
                 mainAxisAlignment: MainAxisAlignment.end, 
                 children: [
@@ -31,13 +35,17 @@ class CreateProjectDialog {
                     onPressed: () {
                       Navigator.pop(context);
                     },
+
                     child: Text(S.of(context).cancel),
+
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
+
                     child: Text(S.of(context).ok),
+
                   )
                 ],
               ),
