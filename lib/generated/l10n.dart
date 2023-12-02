@@ -65,7 +65,7 @@ class S {
     return Intl.message(
       'Projects on the device',
       name: 'projectsonthedevice',
-      desc: ' ',
+      desc: 'Projekte am Gerät',
       args: [],
     );
   }
@@ -75,7 +75,7 @@ class S {
     return Intl.message(
       'Most downloaded',
       name: 'mostdownloaded',
-      desc: ' ',
+      desc: 'Meist heruntergeladen',
       args: [],
     );
   }
@@ -85,7 +85,7 @@ class S {
     return Intl.message(
       'Random projects',
       name: 'randomprojects',
-      desc: ' ',
+      desc: 'Zufällige Projekte',
       args: [],
     );
   }
@@ -95,7 +95,7 @@ class S {
     return Intl.message(
       'Project name',
       name: 'projectname',
-      desc: ' ',
+      desc: 'Projektname',
       args: [],
     );
   }
@@ -105,7 +105,7 @@ class S {
     return Intl.message(
       'Main Project',
       name: 'mainproject',
-      desc: ' ',
+      desc: 'Mein Projekt',
       args: [],
     );
   }
@@ -115,7 +115,7 @@ class S {
     return Intl.message(
       'Example project',
       name: 'exampleproject',
-      desc: ' ',
+      desc: 'Beispielprojekt',
       args: [],
     );
   }
@@ -125,7 +125,7 @@ class S {
     return Intl.message(
       'Cancel',
       name: 'cancel',
-      desc: ' ',
+      desc: 'Abbrechen',
       args: [],
     );
   }
@@ -135,7 +135,7 @@ class S {
     return Intl.message(
       'OK',
       name: 'ok',
-      desc: ' ',
+      desc: 'OK',
       args: [],
     );
   }
