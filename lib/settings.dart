@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:catrobat_flutter/ui/shared/SettingsTable.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+  const SettingsPage({Key? key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
@@ -14,12 +13,12 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Einstellungen'),
+        title: const Text('Settings'),
         leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          }, 
-          icon:const Icon(Icons.arrow_back_ios)
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(Icons.arrow_back_ios)
         ),
       ),
       body: SettingsTable(),

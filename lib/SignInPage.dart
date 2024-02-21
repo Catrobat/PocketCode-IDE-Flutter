@@ -1,200 +1,171 @@
-import 'package:catrobat_flutter/ui/shared/dialogs/SignInRegisterDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 
 class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+  const SignInPage({Key? key});
 
   @override
   State<SignInPage> createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isPasswordVisible = false;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      isPasswordVisible = !isPasswordVisible;
+    });
+  }
+
+  void _signInWithEmail() {
+    // Implement sign in with email logic here
+    String email = emailController.text;
+    String password = passwordController.text;
+    // Do something with email and password
+    print('Signing in with email: $email, password: $password');
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool signInIsChecked = false;
-    bool registerIsChecked = false;
-    bool testCondition = false; //TODO
-    Text titleSignIn = const Text('Einloggen', style: TextStyle(fontSize: 16));
-    Text titleRegister = const Text('Registrieren', style: TextStyle(fontSize: 16));
-    Column contentSignIn = Column(
-      children: [
-        TextFormField(
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
-            labelText: "Benutzername",
-          ),
-        ),
-        TextFormField(
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
-            labelText: "Passwort",
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: ListTile(
-            title: const Text("Passwort anzeigen"),
-            leading: Checkbox(
-              value: signInIsChecked, 
-              onChanged: (value) => {
-                setState(() {
-                  signInIsChecked = value!;
-                }),
-              },
-            ),
-          ),
-        ),
-      ],
-    );
-
-        Column contentRegister = Column(
-      children: [
-        TextFormField(
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
-            labelText: "Benutzername",
-          ),
-        ),
-        TextFormField(
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
-            labelText: "E-Mail",
-          ),
-        ),
-        TextFormField(
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
-            labelText: "Passwort",
-          ),
-        ),
-        TextFormField(
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
-            labelText: "Passwort bestätigen",
-          ),
-        ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: ListTile(
-            title: const Text("Passwort anzeigen"),
-            leading: Checkbox(
-              value: registerIsChecked, 
-              onChanged: (value) => {
-                setState(() {
-                  registerIsChecked = value!;
-                }),
-              },
-            ),
-          ),
-        ),
-      ],
-    );
-    
-    Column actionsSignIn = Column (
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        TextButton(
-          onPressed: testCondition ? () {
-            Navigator.pop(context);
-          } : null,
-          child: const Align(
-            alignment: Alignment.centerRight,
-            child: Text('EINLOGGEN')
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Align(
-            alignment: Alignment.centerRight,
-            child: Text('ABBRECHEN'),
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Align(
-            alignment: Alignment.centerRight,
-            child: Text('PASSWORT ZURÜCKSETZEN'),
-          ),
-        ),
-      ],
-    );   
-
-    Column actionsRegister = Column (
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        TextButton(
-          onPressed: testCondition ? () {
-            Navigator.pop(context);
-          } : null,
-          child: const Align(
-            alignment: Alignment.centerRight,
-            child: Text('REGISTRIEREN')
-          ),
-        ),
-      ],
-    );    
-
     return Scaffold(
+      backgroundColor: Colors.grey[400], // Change background color to blackish
       body: Center(
-        child: Column (
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton (
-              
-              onPressed: () {
-                SignInRegisterDialog.signInRegisterDialog(context, titleSignIn, contentSignIn, actionsSignIn);
-              },
-              child: const Text('EINLOGGEN'),
-            ),
-            TextButton (
-              onPressed: () {
-                SignInRegisterDialog.signInRegisterDialog(context, titleRegister, contentRegister, actionsRegister);
-              },
-              child: const Text('REGISTRIEREN'),
-            ),
-
-            SignInButton(
-              Buttons.google, 
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar( //TODO open google login
-                    content: Text("Google Button Pressed!"),
-                    duration: Duration(milliseconds: 400),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    prefixIcon: Icon(Icons.email),
                   ),
-                );
-              } 
-            ),
-            const Text("Mit der Registrierung akzeptierst du unsere", 
-              style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0)
-              ),
-            ),
-            RichText(
-              text: TextSpan(
-                text: 'Nutzungsbedingungen und Leistungen',
-                //TODO: style
-                style: const TextStyle(
-                  color: Color.fromARGB(255, 205, 116, 0),  
+                  style: TextStyle(color: Colors.black),
                 ),
-                recognizer: TapGestureRecognizer()..onTap =  () async {
-                  var url = Uri.parse("https://share.catrob.at/");
-                  if (await launchUrl(url)) {
-                    await launchUrl(url);
-                  } else {
-                    throw 'Could not launch $url';
-                  }
-                },
-              ) 
+                SizedBox(height: 20),
+                TextField(
+                  controller: passwordController,
+                  obscureText: !isPasswordVisible,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        _togglePasswordVisibility();
+                      },
+                      child: Icon(
+                        isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  style: TextStyle(color: Colors.black),
+                ),
+                SizedBox(height: 20),
+                SizedBox(
+                  width: double.infinity, // Button width takes the maximum available space
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _signInWithEmail();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 20), // Adjust the vertical padding as needed
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      backgroundColor: Colors.blueGrey,
+                    ),
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                RichText(
+                  text: TextSpan(
+                    text: "Don't have an account? ",
+                    style: TextStyle(fontSize: 14, color: Colors.white), // Change text color to white
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: 'Sign Up',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            // Navigate to the registration page
+                            // Example: Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()));
+                            print('Navigate to the registration page');
+                          },
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                SignInButton(
+                  Buttons.google,
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Google Button Pressed!"),
+                        duration: Duration(milliseconds: 400),
+                      ),
+                    );
+                  },
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  // Increase button width
+                  text: 'Sign in with Google',
+                  elevation: 0,
+                 // Increase text size
+                ),
+                SizedBox(height: 20),
+                Text(
+                  "By registering, you agree to our",
+                  style: TextStyle(color: Colors.white), // Change text color to white
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: 'Terms of Service and Performance',
+                    style: TextStyle(
+                      color: Colors.blue, // Changed text color to blue
+                      decoration: TextDecoration.underline, // Added underline decoration
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () async {
+                        var url = Uri.parse("https://share.catrob.at/");
+                        if (await canLaunch(url.toString())) {
+                          await launch(url.toString());
+                        } else {
+                          throw 'Could not launch $url';
+                        }
+                      },
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),          
+          ),
+        ),
       ),
     );
   }

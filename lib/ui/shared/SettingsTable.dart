@@ -1,40 +1,70 @@
 import 'package:flutter/material.dart';
 
-class SettingsTable extends StatelessWidget {
-  const SettingsTable({super.key, isChecked});
-  final bool isChecked = false;
+class SettingsTable extends StatefulWidget {
+  const SettingsTable({Key? key, this.isChecked = false});
+
+  final bool isChecked;
+
+  @override
+  _SettingsTableState createState() => _SettingsTableState();
+}
+
+class _SettingsTableState extends State<SettingsTable> {
+  Map<String, bool> itemCheckedState = {
+    "Language \nSelect app language": false,
+    "Web Access \nEdit to add or remove trusted domains": false,
+    "Multiplayer Extension \nEnable the app to use multiplayer variables shared over Bluetooth": false,
+    "Stitching \nCreate patterns for embroidery machines": false,
+    "Lego Mindstorms NXT Blocks \nAllow control of Lego Mindstorm NXT robots": false,
+    "Lego Mindstorms EV3 Blocks \nAllow control of Lego Mindstorm EV3 robots": false,
+    "Parrot AR.Drone 2.0 Blocks \nAllow control of ARDrone 2.0 Quadcopters": false,
+    "Parrot Jumping Sumo Blocks \nAllow control of Parrot's Jumping Sumo": false,
+    "Arduino Blocks \nAllow control with Arduino boards": false,
+    "Near Field Communication \nAllow the use of NFC tags in projects": false,
+    "Raspberry Pi Blocks \nAllow control of Raspberry Pi computers": false,
+    "Phiro Blocks \nAllow control of a Phiro robot": false,
+    "Enable Cast Features \nShow the Cast button and allow setting a Cast project": false,
+    "Accessibility \nChange app appearance": false,
+    "Show Hints \nEnable to display hints": false,
+    "Test Extension \nEnable creating tests": false,
+    "Send Anonymous Crash Reports \nAutomatically send crash reports": false,
+  };
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Table(
-        border: const TableBorder(bottom: BorderSide(), horizontalInside: BorderSide()),
-        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-        children: <TableRow>[
-          buildRow("Sprache \nApp-Sprache auswählen", false),
-          buildRow("Webzugriff \nBearbeiten, um vertrauenswürdeige Domänen hinzuzufügen oder zu entfernen", false),
-          buildRow("Mehrspieler-Erweiterung \nErmögliche der App, über Bluetooth freigegebene Multiplayer-Variablen zu verwenden", true),
-          buildRow("Sticken \nErstelle Muster für Stickmaschinen", true),
-          buildRow("Lego Mindstorms NXT Bausteine \nErlaube die Steuerung von Lego Mindstorm NXT Robotern", false),
-          buildRow("Lego Mindstorms EV3 Bausteine \nErlaube die Steuerung von Lego Mindstorm EV3 Robotern", false),
-          buildRow("Parrot AR.Drone 2.0 Bausteine \nErlaubt die Steuerung von ARDrone 2.0 Quadcoptern", false),
-          buildRow("Parrot Jumping Sumo Bausteine \nErlaubt die Steuerung von Parrots Jumping Sumo", true),
-          buildRow("Arduino Bausteine \nErlaubt die Steuerung mit Arduino Boards", true),
-          buildRow("Nahfeldkommunikation \nErlaube die Nutzung von NFC-Tags in Projekten", true),
-          buildRow("Raspberry Pi Bausteine \nErlaubt die Steuerung von Raspberry Pi Computern", true),
-          buildRow("Phiro Bausteine \nErlaubt die Steuerung eines Phiro Roboters", true),
-          buildRow("Erlaubt Cast-Funktionen \nZeigt den Cast-Button und erlaubt die Einstellung eines Cast-Projektes", true),
-          buildRow("Bedienungshilfe \nAussehen der App ändern", false),
-          buildRow("Hinweise anzeigen \nAktivieren um Hinweise anzuzeigen", true),
-          buildRow("Erweiterung testen \nErmöglicht das Erstellen von Tests", true),
-          buildRow("Sende anonyme Absturzberichte \nAbsturzberichte automatisch senden", true),
-        ],
+      child: Column(
+        children: itemCheckedState.keys.map((String cell) {
+          return buildRow(cell);
+        }).toList(),
       ),
     );
   }
-  TableRow buildRow(String cell, bool checkbox) => TableRow(
-    children: <Widget>[
-      Text(cell), 
-      checkbox ? const Checkbox(checkColor: Colors.black, focusColor: Colors.black ,value: true, onChanged: null) : Text(""),] 
-  );
+
+  Widget buildRow(String cell) {
+    return Card(
+      child: ListTile(
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            cell,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        trailing: Checkbox(
+          checkColor: Colors.white,
+          activeColor: itemCheckedState[cell]! ? Colors.green : Colors.grey,
+          value: itemCheckedState[cell],
+          onChanged: (newValue) {
+            setState(() {
+              itemCheckedState[cell] = newValue!;
+            });
+          },
+        ),
+      ),
+    );
+  }
 }

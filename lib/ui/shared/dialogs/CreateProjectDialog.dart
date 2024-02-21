@@ -14,23 +14,23 @@ class CreateProjectDialog {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text('Projektname'),
+              const Text('Project Name'),
               const TextField(
                 autofocus: true,
                 decoration: InputDecoration(
                     border: UnderlineInputBorder(),
-                    hintText: 'Mein Projekt ()'),
+                    hintText: 'My Project ()'),
               ),
               const LandscapePortraitRadio(),
-              const ToggleSwitch(title: "Beispielprojekt"),
+              const ToggleSwitch(title: "Sample Project"),
               Row (
-                mainAxisAlignment: MainAxisAlignment.end, 
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: const Text('Abbrechen'),
+                    child: const Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () {
