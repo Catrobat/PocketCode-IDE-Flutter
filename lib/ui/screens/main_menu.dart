@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../service/Project.dart';
 
 class MainMenu extends StatelessWidget {
-  const MainMenu({super.key});
+  const MainMenu({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,25 +13,25 @@ class MainMenu extends StatelessWidget {
       Project(title: "My Project 1", image: "pc_toolbar_icon.png"),
       Project(title: "My Project 2", image: "pc_toolbar_icon.png"),
       Project(title: "My Project 3", image: "pc_toolbar_icon.png"),
-      Project(title: "My Project 3", image: "pc_toolbar_icon.png"),
-      Project(title: "My Project 3", image: "pc_toolbar_icon.png"),
-      Project(title: "My Project 3", image: "pc_toolbar_icon.png"),
-      Project(title: "My Project 3", image: "pc_toolbar_icon.png"),
+      Project(title: "My Project 4", image: "pc_toolbar_icon.png"),
+      Project(title: "My Project 5", image: "pc_toolbar_icon.png"),
+      Project(title: "My Project 6", image: "pc_toolbar_icon.png"),
+      Project(title: "My Project 7", image: "pc_toolbar_icon.png"),
     ];
 
     return Column(
       children: [
         GestureDetector(
-            onTap: () => {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              MyProject(projectName: projects[0].title))),
-                },
-            child: Card(
-              child: Center(child: Image.asset("images/" + projects[0].image)),
-            )),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MyProject(projectName: projects[0].title),
+            ),
+          ),
+          child: Card(
+            child: Center(child: Image.asset("images/" + projects[0].image)),
+          ),
+        ),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
@@ -45,7 +45,7 @@ class MainMenu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text(
-                          'Projekte am Gerät',
+                          'Projects on the Device',
                           style: TextStyle(fontSize: 22, color: Colors.black),
                         ),
                         Padding(
@@ -65,7 +65,7 @@ class MainMenu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Meist heruntergeladen',
+                          'Most Downloaded',
                           style: TextStyle(fontSize: 22, color: Colors.black),
                         ),
                         Padding(
@@ -85,7 +85,7 @@ class MainMenu extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Zufällige Projekte',
+                          'Random Projects',
                           style: TextStyle(fontSize: 22, color: Colors.black),
                         ),
                         Padding(

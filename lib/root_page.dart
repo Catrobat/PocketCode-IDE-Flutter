@@ -1,101 +1,90 @@
-import 'package:catrobat_flutter/SignInPage.dart';
 import 'package:catrobat_flutter/ui/shared/buttons/Fab.dart';
-import 'package:catrobat_flutter/ui/shared/dialogs/TextDialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+import 'SignInPage.dart';
 import 'home_page.dart';
 import 'settings.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'package:catrobat_flutter/ui/shared/dialogs/TextDialog.dart';
 
 class RootPage extends StatefulWidget {
-  const RootPage({super.key});
+  const RootPage({Key? key});
 
   @override
   State<RootPage> createState() => _RootPageState();
 }
 
 class _RootPageState extends State<RootPage> {
-
-
-
   @override
   Widget build(BuildContext context) {
-    Text titleTermsOfUse = const Text('Nutzungsbedingungen und Leistungen', style: TextStyle(fontSize: 16));
-    Text titleAboutApp = const Text('Über die App', style: TextStyle(fontSize: 16));
+    Text titleTermsOfUse = const Text('Terms of Use and Services', style: TextStyle(fontSize: 16));
+    Text titleAboutApp = const Text('About the App', style: TextStyle(fontSize: 16));
     RichText contentTermsOfUse = RichText(
       text: TextSpan(
-        text: "Um die App und andere Projekte welche von Catrobat zur Verfügung gestellt werden benutzen zu dürfen, muss den Nutzungsbedingungen zugestimmt  werden. Diese müssen auch während der Benutzung der App eingehaltan werden. Für weitere Informationen zu den Nutzungsbedingungen klicken Sie auf den untenstehenden Link.\n",
-        // TODO: style:
-        children: [
-          const WidgetSpan(child: SizedBox(width: 10, height: 50)),
-          TextSpan(
-            text: 'Nutzungsbedingungen und Leistungen',
-            //TODO: style
-            style: const TextStyle(
-              color: Color.fromARGB(255, 205, 116, 0),
+          text: "To use the app and other projects provided by Catrobat, you must agree to the terms of use. These must also be adhered to while using the app. For more information on the terms of use, click on the link below.\n",
+          children: [
+            const WidgetSpan(child: SizedBox(width: 10, height: 50)),
+            TextSpan(
+              text: 'Terms of Use and Services',
+              style: const TextStyle(
+                color: Color.fromARGB(255, 205, 116, 0),
               ),
-            recognizer: TapGestureRecognizer()..onTap =  () async {
-              var url = Uri.parse("https://share.catrob.at/");
-              if (await launchUrl(url)) {
+              recognizer: TapGestureRecognizer()..onTap =  () async {
+                var url = Uri.parse("https://share.catrob.at/");
+                if (await launchUrl(url)) {
                   await launchUrl(url);
                 } else {
                   throw 'Could not launch $url';
                 }
-            },
-          ),
-        ]
+              },
+            ),
+          ]
       ),
-    ); 
-     RichText contentAboutApp = RichText(
+    );
+    RichText contentAboutApp = RichText(
       text: TextSpan(
-        text: "Die App ist eine Programmierumgebung und Interpreter für Android Geräte für die visuelle Programmiersprache Catrobat.\n\nDer Quellcode der App unterliegt hauptsächlich der GNU AGPL v3 Lizenz. Für weitere Informationen klicke auf den untenstehenden Link.\n",
-        // TODO: style:
-        children: [
-          const WidgetSpan(child: SizedBox(height: 50)),
-          TextSpan(
-            text: 'Source Code Lizenz \n',
-            //TODO: style
-            style: const TextStyle(
-              color: Color.fromARGB(255, 205, 116, 0),
+          text: "The app is a programming environment and interpreter for Android devices for the visual programming language Catrobat.\n\nThe source code of the app is mainly under the GNU AGPL v3 license. For more information, click on the link below.\n",
+          children: [
+            const WidgetSpan(child: SizedBox(height: 50)),
+            TextSpan(
+              text: 'Source Code License \n',
+              style: const TextStyle(
+                color: Color.fromARGB(255, 205, 116, 0),
               ),
-            recognizer: TapGestureRecognizer()..onTap =  () async {
-              var url = Uri.parse("https://developer.catrobat.org/licenses");
-              if (await launchUrl(url)) {
+              recognizer: TapGestureRecognizer()..onTap =  () async {
+                var url = Uri.parse("https://developer.catrobat.org/licenses");
+                if (await launchUrl(url)) {
                   await launchUrl(url);
                 } else {
                   throw 'Could not launch $url';
                 }
-            },
-          ),
-          TextSpan(
-            text: 'Über Catrobat',
-            //TODO: style
-            style: const TextStyle(
-              color: Color.fromARGB(255, 205, 116, 0),
+              },
+            ),
+            TextSpan(
+              text: 'About Catrobat',
+              style: const TextStyle(
+                color: Color.fromARGB(255, 205, 116, 0),
               ),
-            recognizer: TapGestureRecognizer()..onTap =  () async {
-              var url = Uri.parse("https://catrobat.org/");
-              if (await launchUrl(url)) {
+              recognizer: TapGestureRecognizer()..onTap =  () async {
+                var url = Uri.parse("https://catrobat.org/");
+                if (await launchUrl(url)) {
                   await launchUrl(url);
                 } else {
                   throw 'Could not launch $url';
                 }
-            },
-          ),
-          //TODO alignment
-          const TextSpan(
-            text: 'Pocket Code Version: ... \n Catrobat Sprachversion: ...',
-            //TODO: style
-            style: TextStyle(
-              fontSize: 10,
-              color: Color.fromARGB(255, 255, 255, 255),
+              },
+            ),
+            const TextSpan(
+              text: 'Pocket Code Version: ... \n Catrobat Language Version: ...',
+              style: TextStyle(
+                fontSize: 10,
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
-          ),
-        ]
+            ),
+          ]
       ),
-    ); 
+    );
     List<Widget> actionsTermsOfUse =  <Widget>[
       TextButton(
         onPressed: () {
@@ -112,46 +101,46 @@ class _RootPageState extends State<RootPage> {
         title: const Text('Pocket Code'),
         actions: [
           IconButton(
-          onPressed: () async {
-            var url = Uri.parse("https://catrob.at/help");
-            launchUrl(url);
-        }, 
-          icon:const Icon(Icons.help_outline)),
+              onPressed: () async {
+                var url = Uri.parse("https://catrob.at/help");
+                launchUrl(url);
+              },
+              icon:const Icon(Icons.help_outline)),
           PopupMenuButton(itemBuilder: (context) {
             return [
               const PopupMenuItem<int>(
                 value: 0,
-                child: Text("Bewerte uns!"),
+                child: Text("Rate Us!"),
               ),
               const PopupMenuItem<int>(
                 value: 1,
-                child: Text("Nutzungsbedingungen und Leistungen"),
+                child: Text("Terms of Use and Services"),
               ),
               const PopupMenuItem<int>(
                 value: 2,
-                child: Text("Datenschutz-Vereinbarung"),
+                child: Text("Privacy Policy"),
               ),
               const PopupMenuItem<int>(
                 value: 3,
-                child: Text("Über die App"),
+                child: Text("About the App"),
               ),
               const PopupMenuItem<int>(
                 value: 4,
-                child: Text("Scratch-Konverter BETA"),
+                child: Text("Scratch Converter BETA"),
               ),
               const PopupMenuItem<int>(
                 value: 5,
-                child: Text("Einstellungen"),
+                child: Text("Settings"),
               ),
               const PopupMenuItem<int>(
                 value: 6,
-                child: Text("Anmelden"),
+                child: Text("Sign In"),
               ),
             ];
           }, onSelected: (value) {
             if (value == 0) {
               //TODO
-            } else if (value == 1) {  
+            } else if (value == 1) {
               TextDialog.showAlertDialog(context, titleTermsOfUse, contentTermsOfUse, actionsTermsOfUse);
             } else if (value == 2) {
               var url = Uri.parse("https://catrob.at/privacypolicy");
@@ -167,7 +156,7 @@ class _RootPageState extends State<RootPage> {
                 }),
               );
             } else if (value == 6) {
-                Navigator.of(context).push(
+              Navigator.of(context).push(
                 MaterialPageRoute(builder: (BuildContext context) {
                   return const SignInPage();
                 }),
